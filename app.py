@@ -5,49 +5,33 @@ st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
+st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         /* General page layout and dark background */
         html, body {
             font-family: 'Inter', sans-serif;
-            background: #070e17; /* Deeper, more saturated dark background */
+            background: #070e17;
             margin: 0;
             padding: 0;
             color: #ffffff;
         }
+        .stApp { background-color: #070e17; }
 
-        /* Streamlit main content container */
-        .st-emotion-cache-1cypq83 {
-            background-color: #070e17;
-            color: #ffffff;
-        }
-        
-        .stApp {
-            background-color: #070e17;
-        }
-
-        /* Keyframes for glowing effect */
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
-            50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 25px rgba(139, 92, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
-        }
-
-        /* Navbar - subtle and clean */
+        /* Navbar */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(10, 16, 26, 0.8);
+            background: rgba(10, 16, 26, 0.85);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2.5rem;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .navbar a {
             margin: 0 0.8rem;
@@ -56,9 +40,7 @@ st.markdown("""
             color: #ffffff;
             transition: color 0.3s ease-in-out;
         }
-        .navbar a:hover {
-            color: #818cf8;
-        }
+        .navbar a:hover { color: #818cf8; }
         .navbar div:first-child {
             font-weight: 900;
             font-size: 1.2rem;
@@ -66,10 +48,10 @@ st.markdown("""
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Hero section - using a smoother, more elegant gradient */
+        /* Hero */
         .hero {
             text-align: center;
-            padding: 7rem 1.5rem 5rem 1.5rem;
+            padding: 7rem 1.5rem 5rem;
             background: linear-gradient(135deg, #0e1627, #070e17);
             color: white;
             border-bottom-left-radius: 50% 5%;
@@ -80,47 +62,42 @@ st.markdown("""
             font-family: 'Poppins', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
-            margin-bottom: 1.25rem;
             background: linear-gradient(90deg, #c7d2fe, #a5b4fc, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-size: 1.2rem;
             max-width: 45rem;
             margin: auto;
-            opacity: 0.8;
-            color: #ffffff; /* Better contrast */
+            color: #e2e8f0;
         }
         .cta-btn {
             display: inline-block;
             margin-top: 2rem;
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            color: white;
             padding: 1rem 2.5rem;
             border-radius: 9999px;
             font-size: 1.1rem;
             font-weight: 700;
+            color: white;
             text-decoration: none;
             box-shadow: 0 5px 25px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease-in-out;
-            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
         }
         .cta-btn:hover {
             transform: translateY(-0.25rem);
             box-shadow: 0 10px 35px rgba(99, 102, 241, 0.6);
-            animation: glow 1.5s infinite ease-in-out;
         }
 
-        /* Section Titles - with a subtle glowing gradient */
+        /* Section Titles */
         .section-title {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             text-align: center;
-            margin: 6rem 0 3rem 0;
+            margin: 6rem 0 3rem;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.1);
         }
         .section-title::after {
             content: '';
@@ -132,117 +109,36 @@ st.markdown("""
             border-radius: 2px;
         }
 
-        /* Feature Cards - with a lift-on-hover effect */
-        .feature-card, .dashboard-card {
+        /* Feature Cards */
+        .feature-card {
             background: #0e1627;
             padding: 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
             text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.08); /* More subtle border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.06);
         }
-        .feature-card:hover, .dashboard-card:hover {
+        .feature-card:hover {
             transform: translateY(-0.75rem);
-            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.6); /* More prominent border glow */
+            box-shadow: 0 16px 50px rgba(0,0,0,0.6), 0 0 20px rgba(99, 102, 241, 0.25);
+            border: 1px solid rgba(99, 102, 241, 0.6);
         }
-        .feature-card h3, .dashboard-card h3 {
-            margin-top: 1rem;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-        .feature-card p, .dashboard-card p {
-            font-size: 0.95rem;
-            color: #ffffff; /* Lighter color for better contrast */
-            flex-grow: 1;
-        }
-        
-        .lottie-container {
-            width: 100%;
-            height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Dashboard specific styles */
-        .dashboard-container {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .dashboard-card {
-            text-align: left;
-            padding: 2rem;
-        }
-        .profile-img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border: 4px solid #6366f1;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-        }
-        .metric-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .metric-icon {
-            font-size: 2rem;
-            color: #6366f1;
-        }
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-        }
-        .metric-label {
-            font-size: 0.9rem;
-            color: #ffffff;
-        }
-
-        /* Final CTA section */
-        .final-cta {
-            text-align: center;
-            margin: 8rem 0;
-        }
-        .final-cta h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            color: #ffffff;
-        }
-        .final-cta p {
-            color: #ffffff; /* Lighter color for better contrast */
-            margin-bottom: 2rem;
-        }
+        .feature-card h3 { color: #f9fafb; }
+        .feature-card p { color: #cbd5e1; }
 
         /* Footer */
         .footer {
             text-align: center;
             padding: 2rem;
-            color: #ffffff;
+            color: #94a3b8;
             margin-top: 5rem;
             font-size: 0.875rem;
             border-top: 1px solid #1e293b;
         }
-
-        /* Custom Streamlit components styling */
-        .stProgress > div > div > div > div {
-            background-color: #ec4899; /* Change progress bar color */
-        }
     </style>
 """, unsafe_allow_html=True)
+
 
 # ---------- Helper: Lottie Player ----------
 def lottie_player(url, height=200, width=200):
