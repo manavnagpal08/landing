@@ -3,142 +3,167 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
-# ---------- Custom Styling (Refined Futuristic SaaS Dark Theme) ----------
+# ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;600;700;800;900&display=swap');
 
-        body {
+        /* General page layout and dark background */
+        html, body {
             font-family: 'Inter', sans-serif;
-            background: #050b14; /* Deep elegant dark */
+            background: #070e17; /* Deeper, more saturated dark background */
             margin: 0;
             padding: 0;
-            color: #e2e8f0;
+            color: #ffffff;
         }
+
+        /* Streamlit main content container */
+        .st-emotion-cache-1cypq83 {
+            background-color: #070e17;
+            color: #ffffff;
+        }
+        
         .stApp {
-            background-color: #050b14;
+            background-color: #070e17;
         }
 
-        /* ✨ Glow animations */
+        /* Keyframes for glowing effect */
         @keyframes glow {
-            0% { box-shadow: 0 0 6px rgba(129,140,248,0.6), 0 0 10px rgba(139,92,246,0.5); }
-            50% { box-shadow: 0 0 20px rgba(129,140,248,0.9), 0 0 35px rgba(236,72,153,0.7); }
-            100% { box-shadow: 0 0 6px rgba(129,140,248,0.6), 0 0 10px rgba(139,92,246,0.5); }
+            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 25px rgba(139, 92, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
         }
 
-        /* 🌙 Navbar */
+        /* Navbar - subtle and clean */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(10, 16, 26, 0.9);
-            backdrop-filter: blur(14px);
+            background: rgba(10, 16, 26, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2.8rem;
+            padding: 1rem 2.5rem;
             z-index: 999;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .navbar a {
-            margin: 0 1rem;
+            margin: 0 0.8rem;
             text-decoration: none;
             font-weight: 600;
-            color: #cbd5e1;
-            transition: color 0.3s ease;
+            color: #ffffff;
+            transition: color 0.3s ease-in-out;
         }
         .navbar a:hover {
             color: #818cf8;
         }
         .navbar div:first-child {
             font-weight: 900;
-            font-size: 1.3rem;
-            color: #a5b4fc;
+            font-size: 1.2rem;
+            color: #818cf8;
             font-family: 'Poppins', sans-serif;
         }
 
-        /* 🚀 Hero */
+        /* Hero section - using a smoother, more elegant gradient */
         .hero {
             text-align: center;
-            padding: 8rem 1.5rem 6rem 1.5rem;
-            background: radial-gradient(circle at 20% 30%, #111827, #050b14);
+            padding: 7rem 1.5rem 5rem 1.5rem;
+            background: linear-gradient(135deg, #0e1627, #070e17);
             color: white;
-            border-bottom-left-radius: 50% 8%;
-            border-bottom-right-radius: 50% 8%;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
         .hero h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.7rem, 6vw, 4.8rem);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #818cf8, #a78bfa, #ec4899);
+            margin-bottom: 1.25rem;
+            background: linear-gradient(90deg, #c7d2fe, #a5b4fc, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            max-width: 46rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 45rem;
             margin: auto;
-            opacity: 0.85;
-            color: #d1d5db;
+            opacity: 0.8;
+            color: #ffffff; /* Better contrast */
         }
         .cta-btn {
             display: inline-block;
-            margin-top: 2.5rem;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+            margin-top: 2rem;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
             color: white;
-            padding: 1rem 2.8rem;
+            padding: 1rem 2.5rem;
             border-radius: 9999px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 6px 30px rgba(129,140,248,0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .cta-btn:hover {
-            transform: translateY(-0.3rem);
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.6);
             animation: glow 1.5s infinite ease-in-out;
         }
 
-        /* 🔥 Section Titles */
+        /* Section Titles - with a subtle glowing gradient */
         .section-title {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             text-align: center;
             margin: 6rem 0 3rem 0;
-            background: linear-gradient(90deg, #a5b4fc, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            margin: 1rem auto 0;
+            border-radius: 2px;
         }
 
-        /* 🌌 Feature Cards */
-        .feature-card {
-            background: #0e1726;
+        /* Feature Cards - with a lift-on-hover effect */
+        .feature-card, .dashboard-card {
+            background: #0e1627;
             padding: 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             text-align: center;
-            transition: all 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             height: 100%;
-            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.08); /* More subtle border */
         }
-        .feature-card:hover {
-            transform: translateY(-0.7rem) scale(1.03);
-            box-shadow: 0 14px 45px rgba(0,0,0,0.6), 0 0 30px rgba(129,140,248,0.3);
-            border: 1px solid rgba(129,140,248,0.6);
+        .feature-card:hover, .dashboard-card:hover {
+            transform: translateY(-0.75rem);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.6); /* More prominent border glow */
         }
-        .feature-card h3 {
+        .feature-card h3, .dashboard-card h3 {
             margin-top: 1rem;
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #f1f5f9;
+            color: #ffffff;
         }
-        .feature-card p {
+        .feature-card p, .dashboard-card p {
             font-size: 0.95rem;
-            color: #94a3b8;
+            color: #ffffff; /* Lighter color for better contrast */
+            flex-grow: 1;
         }
-
+        
         .lottie-container {
             width: 100%;
             height: 120px;
@@ -147,29 +172,74 @@ st.markdown("""
             align-items: center;
         }
 
-        /* 🎯 Final CTA */
+        /* Dashboard specific styles */
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .dashboard-card {
+            text-align: left;
+            padding: 2rem;
+        }
+        .profile-img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        .metric-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .metric-icon {
+            font-size: 2rem;
+            color: #6366f1;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        /* Final CTA section */
         .final-cta {
             text-align: center;
-            margin: 9rem 0;
+            margin: 8rem 0;
         }
         .final-cta h2 {
-            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
-            color: #f8fafc;
+            color: #ffffff;
         }
         .final-cta p {
-            color: #9ca3af;
+            color: #ffffff; /* Lighter color for better contrast */
             margin-bottom: 2rem;
         }
 
-        /* ⚡ Footer */
+        /* Footer */
         .footer {
             text-align: center;
             padding: 2rem;
-            color: #6b7280;
+            color: #ffffff;
             margin-top: 5rem;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             border-top: 1px solid #1e293b;
+        }
+
+        /* Custom Streamlit components styling */
+        .stProgress > div > div > div > div {
+            background-color: #ec4899; /* Change progress bar color */
         }
     </style>
 """, unsafe_allow_html=True)
@@ -187,13 +257,12 @@ def lottie_player(url, height=200, width=200):
 # ---------- Navbar ----------
 st.markdown("""
 <div class="navbar">
-    <div>ScreenerPro</div>
+    <div style="font-weight:900; font-size:1.2rem; color:#818cf8; font-family:'Poppins', sans-serif;">ScreenerPro</div>
     <div>
         <a href="#features">Features</a>
         <a href="#profile">Profile</a>
         <a href="#teams">Teams</a>
         <a href="#jobs">Jobs</a>
-        <a href="#contact">Contact</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -234,7 +303,7 @@ with cols[3]:
 
 # ---------- Profile + Teams ----------
 st.markdown('<div id="profile"></div>', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title">👤 Profile & Projects</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">👤 Your Profile</h2>', unsafe_allow_html=True)
 pcols = st.columns(3)
 with pcols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
@@ -268,7 +337,9 @@ with ecols[1]:
 # ---------- Final CTA ----------
 st.markdown("""
 <div id="contact" class="final-cta">
-    <h2>Ready to Supercharge Your Career?</h2>
+    <h2>
+        Ready to Supercharge Your Career?
+    </h2>
     <p>Join thousands already growing with ScreenerPro.</p>
     <a href="#" class="cta-btn">🚀 Join Now</a>
 </div>
