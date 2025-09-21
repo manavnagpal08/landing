@@ -260,7 +260,7 @@ with cols[0]:
 
 with cols[1]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets9.lottiefiles.com/packages/lf20_xlkxtmul.json", 120, 120)
+    lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/CERTIFIACTE.json", 120, 120)
     st.markdown('<h3>🎓 Certificates</h3><p>Generate and share verified resume certificates.</p></div>', unsafe_allow_html=True)
 
 with cols[2]:
