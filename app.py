@@ -270,7 +270,7 @@ with cols[2]:
 
 with cols[3]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets5.lottiefiles.com/packages/lf20_g2zjkhzt.json", 120, 120)
+    lottie_player("https://assets5.lottiefiles.com/packages/lf20_5z3r.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
 
 # ---------- Profile + Teams ----------
@@ -298,7 +298,7 @@ st.markdown('<h2 class="section-title">🏆 Achievements & Jobs</h2>', unsafe_al
 ecols = st.columns(2)
 with ecols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets1.lottiefiles.com/packages/lf20_9xcyfycw.json", 140, 140)
+    lottie_player("https://assets6.lottiefiles.com/packages/lf20_p8q474.json", 140, 140)
     st.markdown('<h3>🏅 Badges</h3><p>Earn recognition & climb the leaderboard.</p></div>', unsafe_allow_html=True)
 
 with ecols[1]:
