@@ -3,153 +3,207 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
-# ---------- Modern SaaS CSS ----------
+# ---------- Font and General Styling ----------
 st.markdown("""
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+        /* General page layout and dark background */
         body {
             font-family: 'Inter', sans-serif;
-            background: #f8fafc;
+            background: #0f172a;
             margin: 0;
             padding: 0;
+            color: #e2e8f0;
         }
 
-        /* Navbar */
+        /* Streamlit main content container */
+        .st-emotion-cache-1cypq83 {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .stApp {
+            background-color: #0f172a;
+        }
+
+        /* Navbar - a little more subtle and clean */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(14px);
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 40px;
+            padding: 1rem 2.5rem;
             z-index: 999;
-            border-bottom: 1px solid rgba(229,231,235,0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .navbar a {
-            margin: 0 16px;
+            margin: 0 0.8rem;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            color: #1e293b;
-            transition: all 0.3s;
-            position: relative;
+            color: #cbd5e1;
+            transition: color 0.3s ease-in-out;
         }
         .navbar a:hover {
             color: #6366f1;
         }
-        .navbar a::after {
-            content: "";
-            display: block;
-            height: 2px;
-            width: 0;
-            background: linear-gradient(90deg, #6366f1, #9333ea);
-            transition: width 0.3s;
-            margin-top: 4px;
-        }
-        .navbar a:hover::after {
-            width: 100%;
+        .navbar div:first-child {
+            font-weight: 900;
+            font-size: 1.2rem;
+            color: #6366f1;
+            font-family: 'Poppins', sans-serif;
         }
 
-        /* Hero */
+
+        /* Hero section - using a smoother, more elegant gradient */
         .hero {
             text-align: center;
-            padding: 140px 20px 120px 20px;
-            background: linear-gradient(135deg, #6366f1, #9333ea, #ec4899);
+            padding: 7rem 1.5rem 5rem 1.5rem;
+            background: linear-gradient(135deg, #1f2937, #111827);
             color: white;
-            border-bottom-left-radius: 60% 8%;
-            border-bottom-right-radius: 60% 8%;
+            border-bottom-left-radius: 50% 5%;
+            border-bottom-right-radius: 50% 5%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
         }
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 720px;
-            margin: auto;
-            opacity: 0.95;
-        }
-        .cta-btn {
-            display: inline-block;
-            margin-top: 36px;
-            background: linear-gradient(90deg, #6366f1, #9333ea, #ec4899);
-            color: white;
-            padding: 14px 38px;
-            border-radius: 40px;
-            font-size: 1.15rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45);
-            transition: all 0.35s;
-        }
-        .cta-btn:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 14px 36px rgba(99, 102, 241, 0.7);
-        }
-
-        /* Section Titles */
-        .section-title {
-            font-size: 2.6rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
-            text-align: center;
-            margin: 100px 0 50px 0;
-            background: linear-gradient(90deg, #6366f1, #9333ea);
+            margin-bottom: 1.25rem;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899, #f97316);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            max-width: 45rem;
+            margin: auto;
+            opacity: 0.8;
+        }
+        .cta-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 9999px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .cta-btn:hover {
+            transform: translateY(-0.25rem);
+            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.6);
+        }
 
-        /* Feature Cards */
-        .feature-card {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(12px);
-            padding: 34px;
-            border-radius: 28px;
-            box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+        /* Section Titles - with a subtle glowing gradient */
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
             text-align: center;
-            transition: all 0.35s;
+            margin: 6rem 0 3rem 0;
+            color: #e2e8f0;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #6366f1, #ec4899);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* Feature Cards - with a lift-on-hover effect */
+        .feature-card {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         .feature-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 12px 36px rgba(99,102,241,0.25);
+            transform: translateY(-0.75rem);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
         }
         .feature-card h3 {
-            margin-top: 18px;
-            font-size: 1.35rem;
+            margin-top: 1rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #111827;
+            color: #e2e8f0;
         }
         .feature-card p {
-            font-size: 1rem;
-            color: #374151;
+            font-size: 0.95rem;
+            color: #94a3b8;
+            flex-grow: 1;
+        }
+        
+        .lottie-container {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Final CTA section */
+        .final-cta {
+            text-align: center;
+            margin: 8rem 0;
+        }
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #e2e8f0;
+        }
+        .final-cta p {
+            color: #94a3b8;
+            margin-bottom: 2rem;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: #6b7280;
-            margin-top: 100px;
-            font-size: 0.95rem;
-            border-top: 1px solid #e5e7eb;
+            padding: 2rem;
+            color: #64748b;
+            margin-top: 5rem;
+            font-size: 0.875rem;
+            border-top: 1px solid #1e293b;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# ---------- Helper: Lottie ----------
+# ---------- Helper: Lottie Player ----------
 def lottie_player(url, height=200, width=200):
     components.html(f"""
-        <lottie-player src="{url}" background="transparent" speed="1"
-        style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
+        <div class="lottie-container">
+            <lottie-player src="{url}" background="transparent" speed="1"
+            style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
+        </div>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    """, height=height+50, width=width+50)
+    """, height=height + 20, width=width)
 
 # ---------- Navbar ----------
 st.markdown("""
 <div class="navbar">
-    <div style="font-weight:900; font-size:1.3rem; color:#6366f1;">ScreenerPro</div>
+    <div style="font-weight:900; font-size:1.2rem; color:#6366f1; font-family:'Poppins', sans-serif;">ScreenerPro</div>
     <div>
         <a href="#features">Features</a>
         <a href="#profile">Profile</a>
@@ -229,11 +283,11 @@ with ecols[1]:
 
 # ---------- Final CTA ----------
 st.markdown("""
-<div id="contact" style="text-align:center; margin:120px 0;">
-    <h2 style="font-size:2.3rem; font-weight:800; color:#111827;">
+<div id="contact" class="final-cta">
+    <h2>
         Ready to Supercharge Your Career?
     </h2>
-    <p style="color:#374151; font-size:1.05rem;">Join thousands already growing with ScreenerPro.</p>
+    <p>Join thousands already growing with ScreenerPro.</p>
     <a href="#" class="cta-btn">🚀 Join Now</a>
 </div>
 """, unsafe_allow_html=True)
