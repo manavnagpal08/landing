@@ -15,31 +15,31 @@ st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Animation Section ----------
 # ---------- Logo + Animation Section ----------
 # ---------- Logo + Animation Side by Side ----------
-st.markdown("""
+# ---------- Logo + Animation Side by Side ----------
+st.markdown(f"""
 <div style="
     display:flex; 
     justify-content:center; 
     align-items:center; 
-    gap:30px; 
+    gap:40px; 
     margin-top:40px; 
     margin-bottom:40px;
 ">
     <!-- Logo with rounded corners -->
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhq_OCSv-QmuBjXeRQXr60EfsvVA4chRPCNslo3NhjVQkoKjUtiRfTPpGoQjyQXS7sMsJifQC6Yq34cAhNbq9lMwBXZqIIbCij1adyXSuNoyxuzOTDfrPU2dnna0baimldd7Y1KCkvaAfrWC1yLGxp25SJ9s4exJ-JAc8kNcTyUSgkLWbW2DdvhpWH4GlO/s320/logo.png" 
          alt="ScreenerPro Logo" 
-         style="height:100px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.5);">
-    
-    <!-- Container for animation -->
-    <div id="logo-animation"></div>
+         style="height:90px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.5);">
+
+    <!-- Animation directly beside logo -->
+    <lottie-player src="https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json"
+        background="transparent" speed="1"
+        style="width:120px; height:120px;" loop autoplay>
+    </lottie-player>
 </div>
+
+<!-- Lottie player script -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 """, unsafe_allow_html=True)
-
-# Inject the animation beside the logo
-lottie_player(
-    "https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json", 
-    120, 120
-)
-
 
 
 
