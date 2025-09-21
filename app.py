@@ -20,7 +20,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Add your "Hello / Chatbot" animation right below the logo
-lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/Live%20chatbot.json", 200, 200)
+lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json", 200, 200)
 
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
