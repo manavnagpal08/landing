@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
-# ---------- Font and General Styling ----------
+# ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
@@ -12,7 +12,7 @@ st.markdown("""
         /* General page layout and dark background */
         body {
             font-family: 'Inter', sans-serif;
-            background: #0f172a;
+            background: #0a0f1b; /* Deeper dark background */
             margin: 0;
             padding: 0;
             color: #e2e8f0;
@@ -20,19 +20,26 @@ st.markdown("""
 
         /* Streamlit main content container */
         .st-emotion-cache-1cypq83 {
-            background-color: #0f172a;
+            background-color: #0a0f1b;
             color: #e2e8f0;
         }
         
         .stApp {
-            background-color: #0f172a;
+            background-color: #0a0f1b;
         }
 
-        /* Navbar - a little more subtle and clean */
+        /* Keyframes for glowing effect */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.4), 0 0 10px rgba(139, 92, 246, 0.4); }
+            50% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.6), 0 0 20px rgba(139, 92, 246, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.4), 0 0 10px rgba(139, 92, 246, 0.4); }
+        }
+
+        /* Navbar - subtle and clean */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(30, 41, 59, 0.8);
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
@@ -59,12 +66,11 @@ st.markdown("""
             font-family: 'Poppins', sans-serif;
         }
 
-
         /* Hero section - using a smoother, more elegant gradient */
         .hero {
             text-align: center;
             padding: 7rem 1.5rem 5rem 1.5rem;
-            background: linear-gradient(135deg, #1f2937, #111827);
+            background: linear-gradient(135deg, #111827, #0a0f1b);
             color: white;
             border-bottom-left-radius: 50% 5%;
             border-bottom-right-radius: 50% 5%;
@@ -75,7 +81,7 @@ st.markdown("""
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             margin-bottom: 1.25rem;
-            background: linear-gradient(90deg, #8b5cf6, #ec4899, #f97316);
+            background: linear-gradient(90deg, #a78bfa, #f472b6, #fb923c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -102,6 +108,7 @@ st.markdown("""
         .cta-btn:hover {
             transform: translateY(-0.25rem);
             box-shadow: 0 10px 35px rgba(99, 102, 241, 0.6);
+            animation: glow 1.5s infinite ease-in-out;
         }
 
         /* Section Titles - with a subtle glowing gradient */
@@ -126,7 +133,7 @@ st.markdown("""
 
         /* Feature Cards - with a lift-on-hover effect */
         .feature-card {
-            background: #1e293b;
+            background: #151f33;
             padding: 2rem;
             border-radius: 1.5rem;
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
@@ -142,6 +149,7 @@ st.markdown("""
         .feature-card:hover {
             transform: translateY(-0.75rem);
             box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.5); /* Subtle border glow */
         }
         .feature-card h3 {
             margin-top: 1rem;
@@ -192,7 +200,7 @@ st.markdown("""
 
 # ---------- Helper: Lottie Player ----------
 def lottie_player(url, height=200, width=200):
-    components.html(f"""
+    return components.html(f"""
         <div class="lottie-container">
             <lottie-player src="{url}" background="transparent" speed="1"
             style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
