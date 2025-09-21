@@ -1,74 +1,154 @@
 import streamlit as st
+from streamlit_lottie import st_lottie
+import requests
 
-st.set_page_config(page_title="Candidate Portal - ScreenerPro", layout="wide")
+# ------------------- Helper function to load Lottie -------------------
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 
-# Hero Section
+# ------------------- Animations -------------------
+lottie_ai = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_tno6cg2w.json")        # AI
+lottie_resume = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json")    # Resume
+lottie_team = load_lottieurl("https://assets2.lottiefiles.com/private_files/lf30_editor_nnb8zr.json")  # Teamwork
+lottie_certificate = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_jbrw3hcz.json")    # Certificate
+lottie_message = load_lottieurl("https://assets6.lottiefiles.com/private_files/lf30_jtkhrapx.json")   # Messaging
+lottie_jobs = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_ekg5cpjq.json")           # Jobs
+lottie_success = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_touohxv0.json")       # Success
+
+# ------------------- Page Config -------------------
+st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
+
+# ------------------- CSS Styling -------------------
 st.markdown("""
-<div style="text-align:center; padding:100px 20px; background:linear-gradient(135deg,#2563eb,#9333ea,#f43f5e); border-radius:0 0 50px 50px; color:white;">
-    <h1 style="font-size:3.5rem; font-weight:900;">Your Career, Powered by AI 🚀</h1>
-    <p style="font-size:1.3rem; max-width:800px; margin:auto;">
-        Build your profile, showcase projects, get resume certificates, apply for jobs, 
-        collaborate with peers, and grow your career — all in one smart platform.
-    </p>
-    <br>
-    <a href="#" style="background:#fff; color:#2563eb; padding:15px 40px; border-radius:40px; font-weight:700; text-decoration:none; margin-right:15px;">✨ Create Profile</a>
-    <a href="#" style="background:transparent; border:2px solid white; color:white; padding:15px 40px; border-radius:40px; font-weight:700; text-decoration:none;">🔍 Explore Jobs</a>
+    <style>
+        body {
+            background: linear-gradient(135deg, #fdf4ff, #eff6ff, #ecfdf5);
+        }
+        .hero {
+            text-align: center;
+            padding: 120px 20px 80px 20px;
+        }
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #2563eb, #9333ea, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            color: #374151;
+            margin-bottom: 40px;
+        }
+        .cta-btn {
+            background: linear-gradient(90deg, #2563eb, #9333ea);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
+            transition: all 0.3s ease-in-out;
+        }
+        .cta-btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 10px 28px rgba(124, 58, 237, 0.7);
+        }
+        .feature-card {
+            background: white;
+            padding: 35px;
+            border-radius: 28px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 36px rgba(0,0,0,0.15);
+        }
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: #2563eb;
+            margin-top: 15px;
+        }
+        .wave {
+            position: relative;
+            margin-top: -80px;
+        }
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: gray;
+            margin-top: 80px;
+            font-size: 0.9rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# ------------------- Hero Section -------------------
+st.markdown("""
+<div class="hero">
+    <h1>Welcome to ScreenerPro Candidate Portal 🚀</h1>
+    <p>Build your career profile, showcase projects, collaborate with teams, and apply to jobs — all in one place.</p>
+    <a href="#features" class="cta-btn">✨ Explore Features</a>
 </div>
 """, unsafe_allow_html=True)
 
-# Features Section
-st.markdown("<h2 style='text-align:center; margin:60px 0 30px;'>🌟 Platform Features</h2>", unsafe_allow_html=True)
-
-col1, col2, col3 = st.columns(3)
-with col1:
-    st.markdown("""<div style="background:#fff; padding:30px; border-radius:20px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.1);">
-        <h3>📄 Resume Screening</h3>
-        <p>AI-powered resume scoring with instant certification.</p>
-    </div>""", unsafe_allow_html=True)
-
-with col2:
-    st.markdown("""<div style="background:#fff; padding:30px; border-radius:20px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.1);">
-        <h3>👥 Talent Finder</h3>
-        <p>Discover opportunities that match your skills.</p>
-    </div>""", unsafe_allow_html=True)
-
-with col3:
-    st.markdown("""<div style="background:#fff; padding:30px; border-radius:20px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.1);">
-        <h3>💬 Collaboration</h3>
-        <p>Chat, build teams, and work on projects together.</p>
-    </div>""", unsafe_allow_html=True)
-
-col4, col5 = st.columns(2)
-with col4:
-    st.markdown("""<div style="background:#fff; padding:30px; border-radius:20px; text-align:center; margin-top:20px; box-shadow:0 8px 24px rgba(0,0,0,0.1);">
-        <h3>🏆 Profile & Badges</h3>
-        <p>Showcase skills, earn credibility with badges.</p>
-    </div>""", unsafe_allow_html=True)
-
-with col5:
-    st.markdown("""<div style="background:#fff; padding:30px; border-radius:20px; text-align:center; margin-top:20px; box-shadow:0 8px 24px rgba(0,0,0,0.1);">
-        <h3>💼 Apply to Jobs</h3>
-        <p>Directly apply to partnered companies through the portal.</p>
-    </div>""", unsafe_allow_html=True)
-
-# How It Works
-st.markdown("<h2 style='text-align:center; margin:80px 0 40px;'>⚙️ How It Works</h2>", unsafe_allow_html=True)
-steps = ["📝 Create your profile", "📂 Upload resume & projects", "🚀 Apply & Collaborate"]
-for i, step in enumerate(steps, 1):
-    st.markdown(f"<div style='text-align:center; margin:20px; font-size:1.2rem;'> <b>{i}. {step}</b></div>", unsafe_allow_html=True)
-
-# CTA
+# ------------------- Wave Shape -------------------
 st.markdown("""
-<div style="text-align:center; margin:100px 0;">
-    <h2 style="font-size:2.5rem; font-weight:800; color:#2563eb;">Start Your Journey with ScreenerPro</h2>
-    <p>Join thousands of candidates building their future here.</p>
-    <a href="#" style="background:#2563eb; color:white; padding:15px 40px; border-radius:40px; font-weight:700; text-decoration:none;">🚀 Get Started</a>
+<div class="wave">
+<svg viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" 
+d="M0,224L48,224C96,224,192,224,288,229.3C384,235,480,245,576,229.3C672,213,768,171,864,165.3C960,160,1056,192,1152,202.7C1248,213,1344,203,1392,197.3L1440,192L1440,320L0,320Z"></path></svg>
 </div>
 """, unsafe_allow_html=True)
 
-# Footer
+# ------------------- Features Section -------------------
+st.markdown("<h2 id='features' style='text-align:center; font-size:2.5rem;'>✨ Portal Highlights</h2>", unsafe_allow_html=True)
+
+# 2 rows of features
+row1 = st.columns(3)
+with row1[0]:
+    st.markdown('<div class="feature-card">', unsafe_allow_html=True)
+    st_lottie(lottie_resume, height=140, key="resume")
+    st.markdown('<h3>📄 Resume Screening</h3><p>Get instant AI-powered resume feedback & certificates of authenticity.</p></div>', unsafe_allow_html=True)
+with row1[1]:
+    st.markdown('<div class="feature-card">', unsafe_allow_html=True)
+    st_lottie(lottie_certificate, height=140, key="certificate")
+    st.markdown('<h3>🏅 Verified Certificates</h3><p>Earn recognition for your skills with auto-generated certificates.</p></div>', unsafe_allow_html=True)
+with row1[2]:
+    st.markdown('<div class="feature-card">', unsafe_allow_html=True)
+    st_lottie(lottie_team, height=140, key="team")
+    st.markdown('<h3>👥 Team Collaboration</h3><p>Create or join teams, showcase group projects, and build together.</p></div>', unsafe_allow_html=True)
+
+row2 = st.columns(3)
+with row2[0]:
+    st.markdown('<div class="feature-card">', unsafe_allow_html=True)
+    st_lottie(lottie_jobs, height=140, key="jobs")
+    st.markdown('<h3>💼 Apply to Jobs</h3><p>Discover opportunities and apply directly from your candidate profile.</p></div>', unsafe_allow_html=True)
+with row2[1]:
+    st.markdown('<div class="feature-card">', unsafe_allow_html=True)
+    st_lottie(lottie_message, height=140, key="messages")
+    st.markdown('<h3>💬 Smart Messaging</h3><p>Collaborate with recruiters and teammates with built-in chat.</p></div>', unsafe_allow_html=True)
+with row2[2]:
+    st.markdown('<div class="feature-card">', unsafe_allow_html=True)
+    st_lottie(lottie_success, height=140, key="success")
+    st.markdown('<h3>🌟 Earn Badges</h3><p>Unlock achievements as you grow your skills & career journey.</p></div>', unsafe_allow_html=True)
+
+# ------------------- CTA Section -------------------
 st.markdown("""
-<div style="text-align:center; padding:40px; color:#555; border-top:2px solid #eee;">
-    © 2025 ScreenerPro Candidate Portal. All rights reserved.
+<div id="start" style="text-align:center; margin:100px 0;">
+    <h2 style="font-size:2.5rem; font-weight:800; background: linear-gradient(90deg, #2563eb, #9333ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Ready to Build Your Future?
+    </h2>
+    <p style="color:#4b5563;">Join thousands of candidates showcasing their talent on ScreenerPro.</p>
+    <a href="#" class="cta-btn">🚀 Create Your Profile</a>
 </div>
 """, unsafe_allow_html=True)
+
+# ------------------- Footer -------------------
+st.markdown('<div class="footer">© 2025 ScreenerPro. All rights reserved. | Built with ❤️ on Streamlit</div>', unsafe_allow_html=True)
