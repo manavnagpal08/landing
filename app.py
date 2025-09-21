@@ -13,6 +13,7 @@ def lottie_player(url, height=200, width=200):
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Hello Animation Section ----------
 # ---------- Logo + Animation Section ----------
+# ---------- Logo + Animation Section ----------
 st.markdown("""
 <div style="
     display:flex; 
@@ -20,14 +21,12 @@ st.markdown("""
     align-items:center; 
     flex-direction:column; 
     margin-top:40px; 
-    margin-bottom:40px;
+    margin-bottom:20px;
 ">
-    <!-- Logo -->
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhq_OCSv-QmuBjXeRQXr60EfsvVA4chRPCNslo3NhjVQkoKjUtiRfTPpGoQjyQXS7sMsJifQC6Yq34cAhNbq9lMwBXZqIIbCij1adyXSuNoyxuzOTDfrPU2dnna0baimldd7Y1KCkvaAfrWC1yLGxp25SJ9s4exJ-JAc8kNcTyUSgkLWbW2DdvhpWH4GlO/s320/logo.png" 
          alt="ScreenerPro Logo" 
          style="height:80px; margin-bottom:20px;">
-
-    <!-- Tagline -->
+    
     <h2 style="
         font-family:'Poppins', sans-serif; 
         font-weight:700; 
@@ -45,6 +44,7 @@ lottie_player(
     "https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json", 
     220, 220
 )
+
 
 
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
