@@ -12,15 +12,40 @@ def lottie_player(url, height=200, width=200):
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Hello Animation Section ----------
+# ---------- Logo + Animation Section ----------
 st.markdown("""
-<div style="display:flex; justify-content:center; align-items:center; gap:20px; margin-top:30px; margin-bottom:30px;">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhq_OCSv-QmuBjXeRQXr60EfsvVA4chRPCNslo3NhjVQkoKjUtiRfTPpGoQjyQXS7sMsJifQC6Yq34cAhNbq9lMwBXZqIIbCij1adyXSuNoyxuzOTDfrPU2dnna0baimldd7Y1KCkvaAfrWC1yLGxp25SJ9s4exJ-JAc8kNcTyUSgkLWbW2DdvhpWH4GlO/s320/logo.png" alt="ScreenerPro Logo" style="height:70px;">
+<div style="
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    flex-direction:column; 
+    margin-top:40px; 
+    margin-bottom:40px;
+">
+    <!-- Logo -->
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhq_OCSv-QmuBjXeRQXr60EfsvVA4chRPCNslo3NhjVQkoKjUtiRfTPpGoQjyQXS7sMsJifQC6Yq34cAhNbq9lMwBXZqIIbCij1adyXSuNoyxuzOTDfrPU2dnna0baimldd7Y1KCkvaAfrWC1yLGxp25SJ9s4exJ-JAc8kNcTyUSgkLWbW2DdvhpWH4GlO/s320/logo.png" 
+         alt="ScreenerPro Logo" 
+         style="height:80px; margin-bottom:20px;">
 
+    <!-- Tagline -->
+    <h2 style="
+        font-family:'Poppins', sans-serif; 
+        font-weight:700; 
+        font-size:1.6rem; 
+        color:#ffffff; 
+        margin:0 0 15px 0;
+    ">
+        Welcome to <span style="color:#818cf8;">ScreenerPro</span>
+    </h2>
 </div>
 """, unsafe_allow_html=True)
 
-# Add your "Hello / Chatbot" animation right below the logo
-lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json", 200, 200)
+# ---------- Chatbot Animation (Hello) ----------
+lottie_player(
+    "https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json", 
+    220, 220
+)
+
 
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
