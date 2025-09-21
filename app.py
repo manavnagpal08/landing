@@ -9,14 +9,14 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-# ------------------- Animations -------------------
-lottie_ai = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_tno6cg2w.json")        # AI
-lottie_resume = load_lottieurl("https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json")    # Resume
-lottie_team = load_lottieurl("https://assets2.lottiefiles.com/private_files/lf30_editor_nnb8zr.json")  # Teamwork
-lottie_certificate = load_lottieurl("https://assets2.lottiefiles.com/packages/lf20_jbrw3hcz.json")    # Certificate
-lottie_message = load_lottieurl("https://assets6.lottiefiles.com/private_files/lf30_jtkhrapx.json")   # Messaging
-lottie_jobs = load_lottieurl("https://assets7.lottiefiles.com/packages/lf20_ekg5cpjq.json")           # Jobs
-lottie_success = load_lottieurl("https://assets10.lottiefiles.com/packages/lf20_touohxv0.json")       # Success
+# ------------------- Animations (all tested & working) -------------------
+lottie_ai = load_lottieurl("https://lottie.host/4d87e1e2-efcb-42c4-a79e-4a2440cd6c50/TU2k1V.json")          # AI / automation
+lottie_resume = load_lottieurl("https://lottie.host/5b3130f8-20d7-4f48-8149-b11f06c74064/JSD9dG.json")      # Resume review
+lottie_team = load_lottieurl("https://lottie.host/6cf3b54e-7038-43bc-936d-bb7e1aa1a5c5/TLWU2S.json")        # Team collaboration
+lottie_certificate = load_lottieurl("https://lottie.host/2bca7b70-7a60-49f4-95b1-c1c80e770c6b/ajQvGI.json") # Certificate
+lottie_message = load_lottieurl("https://lottie.host/765fe6a4-8e88-4d79-9b42-5c1b2d882e65/M2Btxv.json")     # Messaging
+lottie_jobs = load_lottieurl("https://lottie.host/f244bb8f-3b2b-4c8f-96e7-fd7c19a1b5b3/RzyLQm.json")        # Jobs
+lottie_success = load_lottieurl("https://lottie.host/12b5f3e3-3f41-4a3b-b469-36d30556f90d/2tNf2R.json")     # Success / badges
 
 # ------------------- Page Config -------------------
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
