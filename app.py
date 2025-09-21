@@ -206,6 +206,21 @@ st.markdown("""
             margin-bottom: 2rem;
         }
         
+        /* Testimonials Section */
+        .testimonial-card {
+            background: #0e1627;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -298,7 +313,7 @@ st.markdown('<h2 class="section-title">🏆 Achievements & Jobs</h2>', unsafe_al
 ecols = st.columns(2)
 with ecols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets7.lottiefiles.com/packages/lf20_1r9y3p.json", 140, 140)
+    lottie_player("https://assets1.lottiefiles.com/packages/lf20_q2c72b.json", 140, 140)
     st.markdown('<h3>🏅 Badges</h3><p>Earn recognition & climb the leaderboard.</p></div>', unsafe_allow_html=True)
 
 with ecols[1]:
@@ -306,6 +321,23 @@ with ecols[1]:
     lottie_player("https://assets8.lottiefiles.com/packages/lf20_v3g2a9.json", 140, 140)
     st.markdown('<h3>💼 Apply to Jobs</h3><p>One-click applications for top opportunities.</p></div>', unsafe_allow_html=True)
     
+# ---------- Testimonials ----------
+st.markdown('<div id="testimonials"></div>', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">💬 What Our Users Say</h2>', unsafe_allow_html=True)
+tcols = st.columns(3)
+with tcols[0]:
+    st.markdown('<div class="testimonial-card">', unsafe_allow_html=True)
+    lottie_player("https://assets7.lottiefiles.com/packages/lf20_1r9y3p.json", 100, 100)
+    st.markdown('<p>"ScreenerPro transformed my job search. The resume feedback was invaluable!"</p><h3>— Alex P.</h3></div>', unsafe_allow_html=True)
+with tcols[1]:
+    st.markdown('<div class="testimonial-card">', unsafe_allow_html=True)
+    lottie_player("https://assets1.lottiefiles.com/packages/lf20_b7l6yq.json", 100, 100)
+    st.markdown('<p>"The collaboration tools made working with my team so much easier."</p><h3>— Jamie L.</h3></div>', unsafe_allow_html=True)
+with tcols[2]:
+    st.markdown('<div class="testimonial-card">', unsafe_allow_html=True)
+    lottie_player("https://assets7.lottiefiles.com/packages/lf20_d88s9a.json", 100, 100)
+    st.markdown('<p>"Earning badges and seeing my progress kept me motivated."</p><h3>— Chris M.</h3></div>', unsafe_allow_html=True)
+
 # ---------- Final CTA ----------
 st.markdown("""
 <div id="contact" class="final-cta">
