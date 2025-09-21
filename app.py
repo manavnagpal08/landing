@@ -16,7 +16,7 @@ st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Animation Section ----------
 # ---------- Logo + Animation Side by Side ----------
 # ---------- Logo + Animation Side by Side ----------
-st.markdown(f"""
+components.html("""
 <div style="
     display:flex; 
     justify-content:center; 
@@ -37,12 +37,9 @@ st.markdown(f"""
     </lottie-player>
 </div>
 
-<!-- Lottie player script -->
+<!-- Lottie script -->
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-""", unsafe_allow_html=True)
-
-
-
+""", height=180)
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
     <style>
