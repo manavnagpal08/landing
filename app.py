@@ -294,7 +294,7 @@ st.markdown('<h2 class="section-title">👤 Your Profile</h2>', unsafe_allow_htm
 pcols = st.columns(3)
 with pcols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets10.lottiefiles.com/private_files/lf30_editor_sflkwq.json", 140, 140)
+    lottie_player("https://assets6.lottiefiles.com/packages/lf20_ktwnwv5m.json", 140, 140)
     st.markdown('<h3>🌐 Profile</h3><p>Showcase your skills and personal brand.</p></div>', unsafe_allow_html=True)
 
 with pcols[1]:
@@ -321,22 +321,7 @@ with ecols[1]:
     lottie_player("https://assets8.lottiefiles.com/packages/lf20_v3g2a9.json", 140, 140)
     st.markdown('<h3>💼 Apply to Jobs</h3><p>One-click applications for top opportunities.</p></div>', unsafe_allow_html=True)
     
-# ---------- Testimonials ----------
-st.markdown('<div id="testimonials"></div>', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title">💬 What Our Users Say</h2>', unsafe_allow_html=True)
-tcols = st.columns(3)
-with tcols[0]:
-    st.markdown('<div class="testimonial-card">', unsafe_allow_html=True)
-    lottie_player("https://assets7.lottiefiles.com/packages/lf20_1r9y3p.json", 100, 100)
-    st.markdown('<p>"ScreenerPro transformed my job search. The resume feedback was invaluable!"</p><h3>— Alex P.</h3></div>', unsafe_allow_html=True)
-with tcols[1]:
-    st.markdown('<div class="testimonial-card">', unsafe_allow_html=True)
-    lottie_player("https://assets1.lottiefiles.com/packages/lf20_b7l6yq.json", 100, 100)
-    st.markdown('<p>"The collaboration tools made working with my team so much easier."</p><h3>— Jamie L.</h3></div>', unsafe_allow_html=True)
-with tcols[2]:
-    st.markdown('<div class="testimonial-card">', unsafe_allow_html=True)
-    lottie_player("https://assets7.lottiefiles.com/packages/lf20_d88s9a.json", 100, 100)
-    st.markdown('<p>"Earning badges and seeing my progress kept me motivated."</p><h3>— Chris M.</h3></div>', unsafe_allow_html=True)
+
 
 # ---------- Final CTA ----------
 st.markdown("""
