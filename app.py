@@ -281,7 +281,7 @@ st.markdown('<h2 class="section-title">👤 Your Profile</h2>', unsafe_allow_htm
 pcols = st.columns(3)
 with pcols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets10.lottiefiles.com/private_files/lf30_editor_sflkwq.json", 140, 140)
+    lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/Profile%20user%20card.json", 140, 140)
     st.markdown('<h3>🌐 Profile</h3><p>Showcase your skills and personal brand.</p></div>', unsafe_allow_html=True)
 
 with pcols[1]:
@@ -300,7 +300,7 @@ st.markdown('<h2 class="section-title">🏆 Achievements & Jobs</h2>', unsafe_al
 ecols = st.columns(2)
 with ecols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets7.lottiefiles.com/packages/lf20_1r9y3p.json", 140, 140)
+    lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/Medal%20badge.json", 140, 140)
     st.markdown('<h3>🏅 Badges</h3><p>Earn recognition & climb the leaderboard.</p></div>', unsafe_allow_html=True)
 
 with ecols[1]:
