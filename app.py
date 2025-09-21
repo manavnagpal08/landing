@@ -12,10 +12,6 @@ def lottie_player(url, height=200, width=200):
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Hello Animation Section ----------
-# ---------- Logo + Animation Section ----------
-# ---------- Logo + Animation Section ----------
-# ---------- Logo + Animation Side by Side ----------
-# ---------- Logo + Animation Side by Side ----------
 components.html("""
 <div style="
     display:flex; 
