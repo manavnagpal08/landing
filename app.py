@@ -5,33 +5,68 @@ st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
-st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
-        /* General page layout and dark background */
+        /* General page layout and deep space background */
         html, body {
             font-family: 'Inter', sans-serif;
             background: #070e17;
             margin: 0;
             padding: 0;
             color: #ffffff;
+            overflow-x: hidden;
         }
-        .stApp { background-color: #070e17; }
 
-        /* Navbar */
+        /* Streamlit main content container */
+        .st-emotion-cache-1cypq83, .stApp {
+            background-color: #070e17;
+            color: #ffffff;
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.2;
+            animation: moveGrid 60s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            from { background-position: 0 0; }
+            to { background-position: 500px 500px; }
+        }
+
+        /* Glowing effect keyframes */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 25px rgba(139, 92, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
+        }
+
+        /* Navbar - a more refined look */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(10, 16, 26, 0.85);
+            background: rgba(10, 16, 26, 0.8);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2.5rem;
             z-index: 999;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .navbar a {
             margin: 0 0.8rem;
@@ -40,7 +75,9 @@ st.markdown("""
             color: #ffffff;
             transition: color 0.3s ease-in-out;
         }
-        .navbar a:hover { color: #818cf8; }
+        .navbar a:hover {
+            color: #818cf8;
+        }
         .navbar div:first-child {
             font-weight: 900;
             font-size: 1.2rem;
@@ -48,11 +85,11 @@ st.markdown("""
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Hero */
+        /* Hero section - a smoother, more elegant gradient */
         .hero {
             text-align: center;
-            padding: 7rem 1.5rem 5rem;
-            background: linear-gradient(135deg, #0e1627, #070e17);
+            padding: 7rem 1.5rem 5rem 1.5rem;
+            background: linear-gradient(135deg, #1f2937, #070e17);
             color: white;
             border-bottom-left-radius: 50% 5%;
             border-bottom-right-radius: 50% 5%;
@@ -62,42 +99,47 @@ st.markdown("""
             font-family: 'Poppins', sans-serif;
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
+            margin-bottom: 1.25rem;
             background: linear-gradient(90deg, #c7d2fe, #a5b4fc, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.25rem);
             max-width: 45rem;
             margin: auto;
-            color: #e2e8f0;
+            opacity: 0.8;
+            color: #ffffff;
         }
         .cta-btn {
             display: inline-block;
             margin-top: 2rem;
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
             padding: 1rem 2.5rem;
             border-radius: 9999px;
             font-size: 1.1rem;
             font-weight: 700;
-            color: white;
             text-decoration: none;
             box-shadow: 0 5px 25px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease;
+            transition: all 0.3s ease-in-out;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         .cta-btn:hover {
             transform: translateY(-0.25rem);
             box-shadow: 0 10px 35px rgba(99, 102, 241, 0.6);
+            animation: glow 1.5s infinite ease-in-out;
         }
 
-        /* Section Titles */
+        /* Section Titles - with a subtle glowing gradient */
         .section-title {
             font-family: 'Poppins', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 800;
             text-align: center;
-            margin: 6rem 0 3rem;
+            margin: 6rem 0 3rem 0;
             color: #ffffff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.1);
         }
         .section-title::after {
             content: '';
@@ -109,36 +151,119 @@ st.markdown("""
             border-radius: 2px;
         }
 
-        /* Feature Cards */
-        .feature-card {
+        /* Feature Cards - with a lift-on-hover effect */
+        .feature-card, .talent-card {
             background: #0e1627;
             padding: 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.06);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.08);
         }
-        .feature-card:hover {
+        .feature-card:hover, .talent-card:hover {
             transform: translateY(-0.75rem);
-            box-shadow: 0 16px 50px rgba(0,0,0,0.6), 0 0 20px rgba(99, 102, 241, 0.25);
+            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
             border: 1px solid rgba(99, 102, 241, 0.6);
         }
-        .feature-card h3 { color: #f9fafb; }
-        .feature-card p { color: #cbd5e1; }
+        .feature-card h3, .talent-card h3 {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .feature-card p, .talent-card p {
+            font-size: 0.95rem;
+            color: #ffffff;
+            flex-grow: 1;
+        }
+        
+        .lottie-container {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Top Talent Card - new style */
+        .talent-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, #1e2533, #0d141f);
+            border-radius: 1rem;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .talent-card img {
+            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border: 3px solid #6366f1;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+        .talent-card:hover img {
+            transform: scale(1.05) rotate(5deg);
+        }
+        .talent-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.25rem;
+            color: #ffffff;
+        }
+        .talent-card p {
+            font-size: 0.85rem;
+            color: #a1a9b8;
+        }
+
+        /* Final CTA section */
+        .final-cta {
+            text-align: center;
+            margin: 8rem 0;
+        }
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #ffffff;
+        }
+        .final-cta p {
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
 
         /* Footer */
         .footer {
             text-align: center;
             padding: 2rem;
-            color: #94a3b8;
+            color: #ffffff;
             margin-top: 5rem;
             font-size: 0.875rem;
             border-top: 1px solid #1e293b;
         }
+
+        /* Custom Streamlit components styling */
+        .stProgress > div > div > div > div {
+            background-color: #ec4899;
+        }
+        .st-emotion-cache-1lcbm5h { /* Sidebar background */
+            background-color: #0d141f;
+        }
+        .st-emotion-cache-16txtv8 { /* Sidebar links */
+            color: #ffffff;
+        }
     </style>
 """, unsafe_allow_html=True)
-
 
 # ---------- Helper: Lottie Player ----------
 def lottie_player(url, height=200, width=200):
@@ -150,18 +275,13 @@ def lottie_player(url, height=200, width=200):
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     """, height=height + 20, width=width)
 
-# ---------- Navbar ----------
-st.markdown("""
-<div class="navbar">
-    <div style="font-weight:900; font-size:1.2rem; color:#818cf8; font-family:'Poppins', sans-serif;">ScreenerPro</div>
-    <div>
-        <a href="#features">Features</a>
-        <a href="#profile">Profile</a>
-        <a href="#teams">Teams</a>
-        <a href="#jobs">Jobs</a>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+# ---------- Sidebar Navigation ----------
+with st.sidebar:
+    st.markdown('<div style="font-weight:900; font-size:1.5rem; color:#818cf8; font-family:\'Poppins\', sans-serif; text-align: center; margin-bottom: 2rem;">ScreenerPro</div>', unsafe_allow_html=True)
+    st.markdown('<a href="#features" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Features</a>', unsafe_allow_html=True)
+    st.markdown('<a href="#profile" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Profile</a>', unsafe_allow_html=True)
+    st.markdown('<a href="#teams" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Teams</a>', unsafe_allow_html=True)
+    st.markdown('<a href="#jobs" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Jobs</a>', unsafe_allow_html=True)
 
 # ---------- Hero ----------
 st.markdown("""
@@ -196,6 +316,24 @@ with cols[3]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
     lottie_player("https://assets5.lottiefiles.com/packages/lf20_g2zjkhzt.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
+
+# ---------- Top Talents Section ----------
+st.markdown('<h2 class="section-title">✨ Top Talents</h2>', unsafe_allow_html=True)
+talent_cols = st.columns(3)
+talents = [
+    ("Alice", "Data Scientist", "https://placehold.co/120x120/4f46e5/ffffff?text=A"),
+    ("Bob", "Product Manager", "https://placehold.co/120x120/f97316/ffffff?text=B"),
+    ("Charlie", "UX Designer", "https://placehold.co/120x120/10b981/ffffff?text=C")
+]
+for col, (name, title, img_url) in zip(talent_cols, talents):
+    with col:
+        st.markdown(f"""
+            <div class="talent-card">
+                <img src="{img_url}" alt="Profile Picture">
+                <h4>{name}</h4>
+                <p>{title}</p>
+            </div>
+        """, unsafe_allow_html=True)
 
 # ---------- Profile + Teams ----------
 st.markdown('<div id="profile"></div>', unsafe_allow_html=True)
