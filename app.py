@@ -152,7 +152,7 @@ st.markdown("""
         }
 
         /* Feature Cards - with a lift-on-hover effect */
-        .feature-card, .talent-card {
+        .feature-card {
             background: #0e1627;
             padding: 2rem;
             border-radius: 1.5rem;
@@ -166,18 +166,18 @@ st.markdown("""
             align-items: center;
             border: 1px solid rgba(255,255,255,0.08);
         }
-        .feature-card:hover, .talent-card:hover {
+        .feature-card:hover {
             transform: translateY(-0.75rem);
             box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
             border: 1px solid rgba(99, 102, 241, 0.6);
         }
-        .feature-card h3, .talent-card h3 {
+        .feature-card h3 {
             margin-top: 1rem;
             font-size: 1.3rem;
             font-weight: 700;
             color: #ffffff;
         }
-        .feature-card p, .talent-card p {
+        .feature-card p {
             font-size: 0.95rem;
             color: #ffffff;
             flex-grow: 1;
@@ -190,7 +190,7 @@ st.markdown("""
             justify-content: center;
             align-items: center;
         }
-
+        
         /* Final CTA section */
         .final-cta {
             text-align: center;
@@ -206,21 +206,6 @@ st.markdown("""
             margin-bottom: 2rem;
         }
         
-        /* Testimonials Section */
-        .testimonial-card {
-            background: #0e1627;
-            padding: 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-            text-align: center;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
         /* Footer */
         .footer {
             text-align: center;
@@ -285,8 +270,10 @@ with cols[2]:
 
 with cols[3]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets5.lottiefiles.com/packages/lf20_2s1n2u.json", 120, 120)
+    # The new Lottie animation URL for Collaboration
+    lottie_player("https://lottie.host/b6153b9c-9387-4ff5-ac00-088b39ae59e5/Rp55GIhfnj.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
+
 
 # ---------- Profile + Teams ----------
 st.markdown('<div id="profile"></div>', unsafe_allow_html=True)
@@ -294,7 +281,7 @@ st.markdown('<h2 class="section-title">👤 Your Profile</h2>', unsafe_allow_htm
 pcols = st.columns(3)
 with pcols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets6.lottiefiles.com/packages/lf20_ktwnwv5m.json", 140, 140)
+    lottie_player("https://assets10.lottiefiles.com/private_files/lf30_editor_sflkwq.json", 140, 140)
     st.markdown('<h3>🌐 Profile</h3><p>Showcase your skills and personal brand.</p></div>', unsafe_allow_html=True)
 
 with pcols[1]:
@@ -313,7 +300,7 @@ st.markdown('<h2 class="section-title">🏆 Achievements & Jobs</h2>', unsafe_al
 ecols = st.columns(2)
 with ecols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets1.lottiefiles.com/packages/lf20_q2c72b.json", 140, 140)
+    lottie_player("https://assets7.lottiefiles.com/packages/lf20_1r9y3p.json", 140, 140)
     st.markdown('<h3>🏅 Badges</h3><p>Earn recognition & climb the leaderboard.</p></div>', unsafe_allow_html=True)
 
 with ecols[1]:
@@ -321,8 +308,6 @@ with ecols[1]:
     lottie_player("https://assets8.lottiefiles.com/packages/lf20_v3g2a9.json", 140, 140)
     st.markdown('<h3>💼 Apply to Jobs</h3><p>One-click applications for top opportunities.</p></div>', unsafe_allow_html=True)
     
-
-
 # ---------- Final CTA ----------
 st.markdown("""
 <div id="contact" class="final-cta">
