@@ -304,7 +304,7 @@ with pcols[1]:
 
 with pcols[2]:
     st.markdown('<div id="teams" class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets4.lottiefiles.com/packages/lf20_tbrwjiv5.json", 140, 140)
+    lottie_player("https://assets10.lottiefiles.com/private_files/lf30_editor_sflkwq.json", 140, 140)
     st.markdown('<h3>👥 Teams</h3><p>Create and join teams to collaborate efficiently.</p></div>', unsafe_allow_html=True)
 
 # ---------- Badges & Jobs ----------
