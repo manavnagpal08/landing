@@ -12,7 +12,7 @@ st.markdown("""
         /* General page layout and dark background */
         body {
             font-family: 'Inter', sans-serif;
-            background: #0a0f1b; /* Deeper dark background */
+            background: #070e17; /* Deeper, more saturated dark background */
             margin: 0;
             padding: 0;
             color: #e2e8f0;
@@ -20,33 +20,33 @@ st.markdown("""
 
         /* Streamlit main content container */
         .st-emotion-cache-1cypq83 {
-            background-color: #0a0f1b;
+            background-color: #070e17;
             color: #e2e8f0;
         }
         
         .stApp {
-            background-color: #0a0f1b;
+            background-color: #070e17;
         }
 
         /* Keyframes for glowing effect */
         @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.4), 0 0 10px rgba(139, 92, 246, 0.4); }
-            50% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.6), 0 0 20px rgba(139, 92, 246, 0.6); }
-            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.4), 0 0 10px rgba(139, 92, 246, 0.4); }
+            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 25px rgba(139, 92, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
         }
 
         /* Navbar - subtle and clean */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(10, 16, 26, 0.8);
             backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2.5rem;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         .navbar a {
@@ -57,12 +57,12 @@ st.markdown("""
             transition: color 0.3s ease-in-out;
         }
         .navbar a:hover {
-            color: #6366f1;
+            color: #818cf8;
         }
         .navbar div:first-child {
             font-weight: 900;
             font-size: 1.2rem;
-            color: #6366f1;
+            color: #818cf8;
             font-family: 'Poppins', sans-serif;
         }
 
@@ -70,7 +70,7 @@ st.markdown("""
         .hero {
             text-align: center;
             padding: 7rem 1.5rem 5rem 1.5rem;
-            background: linear-gradient(135deg, #111827, #0a0f1b);
+            background: linear-gradient(135deg, #0e1627, #070e17);
             color: white;
             border-bottom-left-radius: 50% 5%;
             border-bottom-right-radius: 50% 5%;
@@ -81,7 +81,7 @@ st.markdown("""
             font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             margin-bottom: 1.25rem;
-            background: linear-gradient(90deg, #a78bfa, #f472b6, #fb923c);
+            background: linear-gradient(90deg, #c7d2fe, #a5b4fc, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -90,6 +90,7 @@ st.markdown("""
             max-width: 45rem;
             margin: auto;
             opacity: 0.8;
+            color: #d1d5db; /* Better contrast */
         }
         .cta-btn {
             display: inline-block;
@@ -133,7 +134,7 @@ st.markdown("""
 
         /* Feature Cards - with a lift-on-hover effect */
         .feature-card {
-            background: #151f33;
+            background: #0e1627;
             padding: 2rem;
             border-radius: 1.5rem;
             box-shadow: 0 8px 30px rgba(0,0,0,0.3);
@@ -144,12 +145,12 @@ st.markdown("""
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08); /* More subtle border */
         }
         .feature-card:hover {
             transform: translateY(-0.75rem);
             box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.5); /* Subtle border glow */
+            border: 1px solid rgba(99, 102, 241, 0.6); /* More prominent border glow */
         }
         .feature-card h3 {
             margin-top: 1rem;
@@ -159,7 +160,7 @@ st.markdown("""
         }
         .feature-card p {
             font-size: 0.95rem;
-            color: #94a3b8;
+            color: #a1a9b8; /* Lighter color for better contrast */
             flex-grow: 1;
         }
         
@@ -182,7 +183,7 @@ st.markdown("""
             color: #e2e8f0;
         }
         .final-cta p {
-            color: #94a3b8;
+            color: #a1a9b8; /* Lighter color for better contrast */
             margin-bottom: 2rem;
         }
 
@@ -211,7 +212,7 @@ def lottie_player(url, height=200, width=200):
 # ---------- Navbar ----------
 st.markdown("""
 <div class="navbar">
-    <div style="font-weight:900; font-size:1.2rem; color:#6366f1; font-family:'Poppins', sans-serif;">ScreenerPro</div>
+    <div style="font-weight:900; font-size:1.2rem; color:#818cf8; font-family:'Poppins', sans-serif;">ScreenerPro</div>
     <div>
         <a href="#features">Features</a>
         <a href="#profile">Profile</a>
