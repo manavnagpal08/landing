@@ -1,24 +1,6 @@
 import streamlit as st
-from streamlit_lottie import st_lottie
-import requests
+import streamlit.components.v1 as components
 
-# Function to load Lottie animations safely
-def load_lottieurl(url: str):
-    try:
-        r = requests.get(url)
-        if r.status_code != 200:
-            return None
-        return r.json()
-    except:
-        return None
-
-# ✅ Updated working Lottie animations
-lottie_ai = load_lottieurl("https://lottie.host/2e1571ab-48b8-4d26-b1e5-0a1ac195ab85/1E5sGlP6Jj.json")       # AI
-lottie_resume = load_lottieurl("https://lottie.host/7b61b6af-2832-4c1b-bf11-8aa174c0b9a3/wWtCp9qz0y.json")   # Resume
-lottie_success = load_lottieurl("https://lottie.host/d7db4609-94d0-4636-9d63-b16db0a1c6f1/zPYtMEFIlO.json") # Success
-lottie_team = load_lottieurl("https://lottie.host/9c94a7c4-f322-4781-bdb9-87222c4684b4/ECy2m2GmAm.json")    # Teamwork
-
-# Page config
 st.set_page_config(page_title="ScreenerPro - AI Hiring", layout="wide")
 
 # Custom CSS
@@ -76,10 +58,6 @@ st.markdown("""
             color: #2563eb;
             margin-top: 15px;
         }
-        .wave {
-            position: relative;
-            margin-top: -100px;
-        }
         .footer {
             text-align: center;
             padding: 40px;
@@ -89,6 +67,14 @@ st.markdown("""
         }
     </style>
 """, unsafe_allow_html=True)
+
+# Function to insert lottie animation (via HTML)
+def lottie_player(url, height=200, width=200):
+    components.html(f"""
+        <lottie-player src="{url}"  background="transparent"  speed="1"  
+        style="width:{width}px; height:{height}px;"  loop autoplay></lottie-player>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    """, height=height+50, width=width+50)
 
 # Hero Section
 st.markdown("""
@@ -105,17 +91,17 @@ row1 = st.columns(3)
 
 with row1[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    st_lottie(lottie_ai, height=140, key="ai")
+    lottie_player("https://assets2.lottiefiles.com/packages/lf20_tno6cg2w.json", height=140, width=140)
     st.markdown('<h3>⚡ Instant Screening</h3><p>AI reviews resumes in seconds and ranks candidates automatically.</p></div>', unsafe_allow_html=True)
 
 with row1[1]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    st_lottie(lottie_resume, height=140, key="resume")
+    lottie_player("https://assets1.lottiefiles.com/packages/lf20_jcikwtux.json", height=140, width=140)
     st.markdown('<h3>📄 Resume Screening</h3><p>Get instant AI-powered resume evaluation.</p></div>', unsafe_allow_html=True)
 
 with row1[2]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    st_lottie(lottie_success, height=140, key="success")
+    lottie_player("https://assets10.lottiefiles.com/packages/lf20_touohxv0.json", height=140, width=140)
     st.markdown('<h3>📈 Scalable & Reliable</h3><p>Trusted by startups and enterprises for volume hiring.</p></div>', unsafe_allow_html=True)
 
 # How It Works
@@ -128,10 +114,6 @@ with steps[1]:
     st.markdown('<div class="feature-card">2️⃣ <h3>AI Screens Resumes</h3><p>Smart algorithms scan, score & sort candidates.</p></div>', unsafe_allow_html=True)
 with steps[2]:
     st.markdown('<div class="feature-card">3️⃣ <h3>Get Ranked Shortlist</h3><p>Receive a ready-to-use shortlist instantly.</p></div>', unsafe_allow_html=True)
-
-# Team Section
-st.markdown("<h2 style='text-align:center; font-size:2.5rem;'>👨‍💻 Meet the AI + HR Team</h2>", unsafe_allow_html=True)
-st_lottie(lottie_team, height=200, key="team")
 
 # CTA Section
 st.markdown("""
