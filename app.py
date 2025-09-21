@@ -291,7 +291,7 @@ with pcols[1]:
 
 with pcols[2]:
     st.markdown('<div id="teams" class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets4.lottiefiles.com/packages/lf20_tbrwjiv5.json", 140, 140)
+    lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/TEAMS.json", 140, 140)
     st.markdown('<h3>👥 Teams</h3><p>Create and join teams to collaborate efficiently.</p></div>', unsafe_allow_html=True)
 
 # ---------- Badges & Jobs ----------
@@ -305,7 +305,7 @@ with ecols[0]:
 
 with ecols[1]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets8.lottiefiles.com/packages/lf20_3vbOcw.json", 140, 140)
+    lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/Share.json", 140, 140)
     st.markdown('<h3>💼 Apply to Jobs</h3><p>One-click applications for top opportunities.</p></div>', unsafe_allow_html=True)
     
 # ---------- Final CTA ----------
