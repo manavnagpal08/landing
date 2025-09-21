@@ -2,6 +2,18 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
+# ---------- Logo + Hello Animation Section ----------
+st.markdown("""
+<div style="display:flex; justify-content:center; align-items:center; gap:20px; margin-top:30px; margin-bottom:30px;">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhq_OCSv-QmuBjXeRQXr60EfsvVA4chRPCNslo3NhjVQkoKjUtiRfTPpGoQjyQXS7sMsJifQC6Yq34cAhNbq9lMwBXZqIIbCij1adyXSuNoyxuzOTDfrPU2dnna0baimldd7Y1KCkvaAfrWC1yLGxp25SJ9s4exJ-JAc8kNcTyUSgkLWbW2DdvhpWH4GlO/s320/logo.png" alt="ScreenerPro Logo" style="height:70px;">
+    <h2 style="font-family:'Poppins', sans-serif; font-weight:800; font-size:1.8rem; color:#ffffff; margin:0;">
+        Welcome to ScreenerPro
+    </h2>
+</div>
+""", unsafe_allow_html=True)
+
+# Add your "Hello / Chatbot" animation right below the logo
+lottie_player("https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/Live%20chatbot.json", 200, 200)
 
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
