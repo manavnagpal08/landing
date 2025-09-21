@@ -3,183 +3,153 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
-# ---------- Font and General Styling ----------
-# Note: Using Tailwind-inspired styling for a clean, modern look.
+# ---------- Modern SaaS CSS ----------
 st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
-
-        /* General page layout and background */
         body {
             font-family: 'Inter', sans-serif;
-            background: #f0f2f5;
+            background: #f8fafc;
             margin: 0;
             padding: 0;
         }
 
-        /* Streamlit main content container */
-        .st-emotion-cache-1cypq83 {
-            background-color: #f0f2f5;
-        }
-        
-        .stApp {
-            background-color: #f0f2f5;
-        }
-
-        /* Navbar - a little more subtle and clean */
+        /* Navbar */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(14px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2.5rem;
+            padding: 14px 40px;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(229,231,235,0.6);
         }
         .navbar a {
-            margin: 0 0.8rem;
+            margin: 0 16px;
             text-decoration: none;
             font-weight: 600;
-            color: #334155;
-            transition: color 0.3s ease-in-out;
+            font-size: 0.95rem;
+            color: #1e293b;
+            transition: all 0.3s;
+            position: relative;
         }
         .navbar a:hover {
-            color: #4f46e5;
+            color: #6366f1;
+        }
+        .navbar a::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0;
+            background: linear-gradient(90deg, #6366f1, #9333ea);
+            transition: width 0.3s;
+            margin-top: 4px;
+        }
+        .navbar a:hover::after {
+            width: 100%;
         }
 
-        /* Hero section - using a smoother, more elegant gradient */
+        /* Hero */
         .hero {
             text-align: center;
-            padding: 7rem 1.5rem 5rem 1.5rem;
-            background: linear-gradient(135deg, #6b21a8, #4f46e5);
+            padding: 140px 20px 120px 20px;
+            background: linear-gradient(135deg, #6366f1, #9333ea, #ec4899);
             color: white;
-            border-bottom-left-radius: 50% 5%;
-            border-bottom-right-radius: 50% 5%;
+            border-bottom-left-radius: 60% 8%;
+            border-bottom-right-radius: 60% 8%;
         }
         .hero h1 {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 1.25rem;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            max-width: 45rem;
+            font-size: 1.25rem;
+            max-width: 720px;
             margin: auto;
             opacity: 0.95;
         }
         .cta-btn {
             display: inline-block;
-            margin-top: 1.5rem;
-            background: #ffffff;
-            color: #4f46e5;
-            padding: 0.75rem 2.25rem;
-            border-radius: 9999px;
-            font-size: 1.1rem;
+            margin-top: 36px;
+            background: linear-gradient(90deg, #6366f1, #9333ea, #ec4899);
+            color: white;
+            padding: 14px 38px;
+            border-radius: 40px;
+            font-size: 1.15rem;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.3);
-            transition: all 0.3s ease-in-out;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.45);
+            transition: all 0.35s;
         }
         .cta-btn:hover {
-            transform: translateY(-0.25rem);
-            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 14px 36px rgba(99, 102, 241, 0.7);
         }
 
-        /* Section Titles - using a more professional font */
+        /* Section Titles */
         .section-title {
-            font-family: 'Poppins', sans-serif;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-size: 2.6rem;
             font-weight: 800;
             text-align: center;
-            margin: 5rem 0 2.5rem 0;
-            color: #1f2937;
+            margin: 100px 0 50px 0;
+            background: linear-gradient(90deg, #6366f1, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Feature Cards - with a lift-on-hover effect */
+        /* Feature Cards */
         .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(12px);
+            padding: 34px;
+            border-radius: 28px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.08);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%; /* Ensure all cards have same height */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
+            transition: all 0.35s;
         }
         .feature-card:hover {
-            transform: translateY(-0.5rem);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 36px rgba(99,102,241,0.25);
         }
         .feature-card h3 {
-            margin-top: 1rem;
-            font-size: 1.25rem;
+            margin-top: 18px;
+            font-size: 1.35rem;
             font-weight: 700;
-            color: #1f2937;
+            color: #111827;
         }
         .feature-card p {
-            font-size: 0.95rem;
-            color: #64748b;
-            flex-grow: 1; /* Pushes content to the top */
-        }
-        
-        .lottie-container {
-            width: 100%;
-            height: 120px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Final CTA section */
-        .final-cta {
-            text-align: center;
-            margin: 6rem 0;
-        }
-        .final-cta h2 {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            font-weight: 800;
-            color: #1f2937;
-        }
-        .final-cta p {
-            color: #64748b;
-            margin-bottom: 2rem;
+            font-size: 1rem;
+            color: #374151;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 2rem;
-            color: #94a3b8;
-            margin-top: 5rem;
-            font-size: 0.875rem;
-            border-top: 1px solid #e2e8f0;
+            padding: 40px 20px;
+            color: #6b7280;
+            margin-top: 100px;
+            font-size: 0.95rem;
+            border-top: 1px solid #e5e7eb;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# ---------- Helper: Lottie Player ----------
+# ---------- Helper: Lottie ----------
 def lottie_player(url, height=200, width=200):
     components.html(f"""
-        <div class="lottie-container">
-            <lottie-player src="{url}" background="transparent" speed="1"
-            style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
-        </div>
+        <lottie-player src="{url}" background="transparent" speed="1"
+        style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    """, height=height + 20, width=width)
+    """, height=height+50, width=width+50)
 
 # ---------- Navbar ----------
 st.markdown("""
 <div class="navbar">
-    <div style="font-weight:900; font-size:1.2rem; color:#4f46e5; font-family:'Poppins', sans-serif;">ScreenerPro</div>
+    <div style="font-weight:900; font-size:1.3rem; color:#6366f1;">ScreenerPro</div>
     <div>
         <a href="#features">Features</a>
         <a href="#profile">Profile</a>
@@ -259,11 +229,11 @@ with ecols[1]:
 
 # ---------- Final CTA ----------
 st.markdown("""
-<div id="contact" class="final-cta">
-    <h2>
+<div id="contact" style="text-align:center; margin:120px 0;">
+    <h2 style="font-size:2.3rem; font-weight:800; color:#111827;">
         Ready to Supercharge Your Career?
     </h2>
-    <p>Join thousands already growing with ScreenerPro.</p>
+    <p style="color:#374151; font-size:1.05rem;">Join thousands already growing with ScreenerPro.</p>
     <a href="#" class="cta-btn">🚀 Join Now</a>
 </div>
 """, unsafe_allow_html=True)
