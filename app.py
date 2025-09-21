@@ -1,5 +1,14 @@
 import streamlit as st
 import streamlit.components.v1 as components
+# ---------- Helper: Lottie Player ----------
+def lottie_player(url, height=200, width=200):
+    return components.html(f"""
+        <div class="lottie-container">
+            <lottie-player src="{url}" background="transparent" speed="1"
+            style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
+        </div>
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    """, height=height + 20, width=width)
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Hello Animation Section ----------
@@ -241,15 +250,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# ---------- Helper: Lottie Player ----------
-def lottie_player(url, height=200, width=200):
-    return components.html(f"""
-        <div class="lottie-container">
-            <lottie-player src="{url}" background="transparent" speed="1"
-            style="width:{width}px; height:{height}px;" loop autoplay></lottie-player>
-        </div>
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    """, height=height + 20, width=width)
 
 # ---------- Hero ----------
 st.markdown("""
