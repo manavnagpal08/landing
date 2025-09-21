@@ -270,8 +270,8 @@ with cols[2]:
 
 with cols[3]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    # The new Lottie animation URL for Collaboration
-    lottie_player("https://lottie.host/b6153b9c-9387-4ff5-ac00-088b39ae59e5/Rp55GIhfnj.json", 120, 120)
+    # New, stable Lottie animation for Collaboration
+    lottie_player("https://assets3.lottiefiles.com/packages/lf20_t6t3e6m0.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
 
 
