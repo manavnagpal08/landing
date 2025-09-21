@@ -305,7 +305,7 @@ with ecols[0]:
 
 with ecols[1]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
-    lottie_player("https://assets8.lottiefiles.com/packages/lf20_v3g2a9.json", 140, 140)
+    lottie_player("https://assets7.lottiefiles.com/packages/lf20_ekg5cpjq.json", 140, 140)
     st.markdown('<h3>💼 Apply to Jobs</h3><p>One-click applications for top opportunities.</p></div>', unsafe_allow_html=True)
     
 # ---------- Final CTA ----------
