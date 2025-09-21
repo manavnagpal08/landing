@@ -6,7 +6,7 @@ st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
 st.markdown("""
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+        @import url('https://fonts.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         /* General page layout and deep space background */
@@ -191,42 +191,6 @@ st.markdown("""
             align-items: center;
         }
 
-        /* Top Talent Card - new style */
-        .talent-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 1.5rem;
-            background: linear-gradient(145deg, #1e2533, #0d141f);
-            border-radius: 1rem;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-        .talent-card img {
-            border-radius: 50%;
-            width: 90px;
-            height: 90px;
-            object-fit: cover;
-            border: 3px solid #6366f1;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease;
-        }
-        .talent-card:hover img {
-            transform: scale(1.05) rotate(5deg);
-        }
-        .talent-card h4 {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-            margin-bottom: 0.25rem;
-            color: #ffffff;
-        }
-        .talent-card p {
-            font-size: 0.85rem;
-            color: #a1a9b8;
-        }
-
         /* Final CTA section */
         .final-cta {
             text-align: center;
@@ -275,14 +239,6 @@ def lottie_player(url, height=200, width=200):
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     """, height=height + 20, width=width)
 
-# ---------- Sidebar Navigation ----------
-with st.sidebar:
-    st.markdown('<div style="font-weight:900; font-size:1.5rem; color:#818cf8; font-family:\'Poppins\', sans-serif; text-align: center; margin-bottom: 2rem;">ScreenerPro</div>', unsafe_allow_html=True)
-    st.markdown('<a href="#features" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Features</a>', unsafe_allow_html=True)
-    st.markdown('<a href="#profile" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Profile</a>', unsafe_allow_html=True)
-    st.markdown('<a href="#teams" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Teams</a>', unsafe_allow_html=True)
-    st.markdown('<a href="#jobs" style="display:block; margin: 1rem 0; text-decoration:none; color:#ffffff; font-weight:600;">Jobs</a>', unsafe_allow_html=True)
-
 # ---------- Hero ----------
 st.markdown("""
 <div class="hero">
@@ -316,24 +272,6 @@ with cols[3]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
     lottie_player("https://assets5.lottiefiles.com/packages/lf20_g2zjkhzt.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
-
-# ---------- Top Talents Section ----------
-st.markdown('<h2 class="section-title">✨ Top Talents</h2>', unsafe_allow_html=True)
-talent_cols = st.columns(3)
-talents = [
-    ("Alice", "Data Scientist", "https://placehold.co/120x120/4f46e5/ffffff?text=A"),
-    ("Bob", "Product Manager", "https://placehold.co/120x120/f97316/ffffff?text=B"),
-    ("Charlie", "UX Designer", "https://placehold.co/120x120/10b981/ffffff?text=C")
-]
-for col, (name, title, img_url) in zip(talent_cols, talents):
-    with col:
-        st.markdown(f"""
-            <div class="talent-card">
-                <img src="{img_url}" alt="Profile Picture">
-                <h4>{name}</h4>
-                <p>{title}</p>
-            </div>
-        """, unsafe_allow_html=True)
 
 # ---------- Profile + Teams ----------
 st.markdown('<div id="profile"></div>', unsafe_allow_html=True)
