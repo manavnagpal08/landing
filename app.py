@@ -10,7 +10,7 @@ st.markdown("""
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
         /* General page layout and dark background */
-        body {
+        html, body {
             font-family: 'Inter', sans-serif;
             background: #070e17; /* Deeper, more saturated dark background */
             margin: 0;
@@ -133,7 +133,7 @@ st.markdown("""
         }
 
         /* Feature Cards - with a lift-on-hover effect */
-        .feature-card {
+        .feature-card, .dashboard-card {
             background: #0e1627;
             padding: 2rem;
             border-radius: 1.5rem;
@@ -147,18 +147,18 @@ st.markdown("""
             align-items: center;
             border: 1px solid rgba(255,255,255,0.08); /* More subtle border */
         }
-        .feature-card:hover {
+        .feature-card:hover, .dashboard-card:hover {
             transform: translateY(-0.75rem);
             box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
             border: 1px solid rgba(99, 102, 241, 0.6); /* More prominent border glow */
         }
-        .feature-card h3 {
+        .feature-card h3, .dashboard-card h3 {
             margin-top: 1rem;
             font-size: 1.3rem;
             font-weight: 700;
             color: #e2e8f0;
         }
-        .feature-card p {
+        .feature-card p, .dashboard-card p {
             font-size: 0.95rem;
             color: #a1a9b8; /* Lighter color for better contrast */
             flex-grow: 1;
@@ -170,6 +170,46 @@ st.markdown("""
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /* Dashboard specific styles */
+        .dashboard-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .dashboard-card {
+            text-align: left;
+            padding: 2rem;
+        }
+        .profile-img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid #6366f1;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+        .metric-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .metric-icon {
+            font-size: 2rem;
+            color: #6366f1;
+        }
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e2e8f0;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
         }
 
         /* Final CTA section */
@@ -196,6 +236,11 @@ st.markdown("""
             font-size: 0.875rem;
             border-top: 1px solid #1e293b;
         }
+
+        /* Custom Streamlit components styling */
+        .stProgress > div > div > div > div {
+            background-color: #ec4899; /* Change progress bar color */
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -215,10 +260,10 @@ st.markdown("""
     <div style="font-weight:900; font-size:1.2rem; color:#818cf8; font-family:'Poppins', sans-serif;">ScreenerPro</div>
     <div>
         <a href="#features">Features</a>
+        <a href="#dashboard">Dashboard</a>
         <a href="#profile">Profile</a>
         <a href="#teams">Teams</a>
         <a href="#jobs">Jobs</a>
-        <a href="#contact">Contact</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -257,9 +302,74 @@ with cols[3]:
     lottie_player("https://assets5.lottiefiles.com/packages/lf20_g2zjkhzt.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
 
+# ---------- Dashboard ----------
+st.markdown('<div id="dashboard"></div>', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">📊 Your Dashboard</h2>', unsafe_allow_html=True)
+
+dcols = st.columns([1, 2.5])
+with dcols[0]:
+    st.markdown("""
+        <div class="dashboard-card" style="text-align: center; justify-content: flex-start;">
+            <img class="profile-img" src="https://placehold.co/120x120/4f46e5/ffffff?text=U" alt="Profile Picture">
+            <h3 style="margin-top: 1rem;">Jane Doe</h3>
+            <p style="font-size: 0.9rem; color: #a1a9b8;">Full Stack Developer</p>
+        </div>
+    """, unsafe_allow_html=True)
+    st.markdown('<div style="margin-top: 1.5rem;"></div>', unsafe_allow_html=True)
+    st.markdown("""
+        <div class="dashboard-card" style="text-align: left; padding: 1.5rem;">
+            <h3>Latest Activity</h3>
+            <p style="font-size: 0.8rem; color: #a1a9b8;">Joined Team Alpha<br>Completed "Python Basics" assessment<br>Earned "Collaborator" badge</p>
+        </div>
+    """, unsafe_allow_html=True)
+
+with dcols[1]:
+    st.markdown("""
+        <div class="dashboard-container" style="justify-content: flex-start; align-items: stretch; gap: 1.5rem;">
+            <div class="dashboard-card" style="padding: 1.5rem; text-align: left; flex: 1;">
+                <div class="metric-container">
+                    <span class="metric-icon">🏆</span>
+                    <div>
+                        <span class="metric-value">12</span>
+                        <p class="metric-label">Badges Earned</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card" style="padding: 1.5rem; text-align: left; flex: 1;">
+                <div class="metric-container">
+                    <span class="metric-icon">✅</span>
+                    <div>
+                        <span class="metric-value">5</span>
+                        <p class="metric-label">Projects Completed</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-card" style="padding: 1.5rem; text-align: left; flex: 1;">
+                <div class="metric-container">
+                    <span class="metric-icon">🤝</span>
+                    <div>
+                        <span class="metric-value">95%</span>
+                        <p class="metric-label">Collaboration Score</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown('<div style="margin-top: 1.5rem;"></div>', unsafe_allow_html=True)
+
+    st.markdown("""
+        <div class="dashboard-card" style="text-align: left;">
+            <h3>Your Progress</h3>
+            <p style="margin-bottom: 0.5rem;">Front-end Development Goal</p>
+        </div>
+    """, unsafe_allow_html=True)
+    st.progress(70)
+    st.markdown('<p style="font-size: 0.8rem; color: #a1a9b8; text-align: right;">70% Complete</p>', unsafe_allow_html=True)
+
 # ---------- Profile + Teams ----------
 st.markdown('<div id="profile"></div>', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title">👤 Profile & Projects</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">👤 Your Profile</h2>', unsafe_allow_html=True)
 pcols = st.columns(3)
 with pcols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
