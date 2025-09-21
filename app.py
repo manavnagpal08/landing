@@ -3,167 +3,142 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 
-# ---------- Custom Fonts and Styling (Futuristic Dark Theme) ----------
+# ---------- Custom Styling (Refined Futuristic SaaS Dark Theme) ----------
 st.markdown("""
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 
-        /* General page layout and dark background */
-        html, body {
+        body {
             font-family: 'Inter', sans-serif;
-            background: #070e17; /* Deeper, more saturated dark background */
+            background: #050b14; /* Deep elegant dark */
             margin: 0;
             padding: 0;
             color: #e2e8f0;
         }
-
-        /* Streamlit main content container */
-        .st-emotion-cache-1cypq83 {
-            background-color: #070e17;
-            color: #e2e8f0;
-        }
-        
         .stApp {
-            background-color: #070e17;
+            background-color: #050b14;
         }
 
-        /* Keyframes for glowing effect */
+        /* ✨ Glow animations */
         @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
-            50% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 25px rgba(139, 92, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(99, 102, 241, 0.6), 0 0 10px rgba(139, 92, 246, 0.6); }
+            0% { box-shadow: 0 0 6px rgba(129,140,248,0.6), 0 0 10px rgba(139,92,246,0.5); }
+            50% { box-shadow: 0 0 20px rgba(129,140,248,0.9), 0 0 35px rgba(236,72,153,0.7); }
+            100% { box-shadow: 0 0 6px rgba(129,140,248,0.6), 0 0 10px rgba(139,92,246,0.5); }
         }
 
-        /* Navbar - subtle and clean */
+        /* 🌙 Navbar */
         .navbar {
             position: sticky;
             top: 0;
-            background: rgba(10, 16, 26, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 16, 26, 0.9);
+            backdrop-filter: blur(14px);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.8rem;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
         .navbar a {
-            margin: 0 0.8rem;
+            margin: 0 1rem;
             text-decoration: none;
             font-weight: 600;
             color: #cbd5e1;
-            transition: color 0.3s ease-in-out;
+            transition: color 0.3s ease;
         }
         .navbar a:hover {
             color: #818cf8;
         }
         .navbar div:first-child {
             font-weight: 900;
-            font-size: 1.2rem;
-            color: #818cf8;
+            font-size: 1.3rem;
+            color: #a5b4fc;
             font-family: 'Poppins', sans-serif;
         }
 
-        /* Hero section - using a smoother, more elegant gradient */
+        /* 🚀 Hero */
         .hero {
             text-align: center;
-            padding: 7rem 1.5rem 5rem 1.5rem;
-            background: linear-gradient(135deg, #0e1627, #070e17);
+            padding: 8rem 1.5rem 6rem 1.5rem;
+            background: radial-gradient(circle at 20% 30%, #111827, #050b14);
             color: white;
-            border-bottom-left-radius: 50% 5%;
-            border-bottom-right-radius: 50% 5%;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border-bottom-left-radius: 50% 8%;
+            border-bottom-right-radius: 50% 8%;
         }
         .hero h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-size: clamp(2.7rem, 6vw, 4.8rem);
             font-weight: 800;
-            margin-bottom: 1.25rem;
-            background: linear-gradient(90deg, #c7d2fe, #a5b4fc, #818cf8);
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #818cf8, #a78bfa, #ec4899);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         .hero p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            max-width: 45rem;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            max-width: 46rem;
             margin: auto;
-            opacity: 0.8;
-            color: #d1d5db; /* Better contrast */
+            opacity: 0.85;
+            color: #d1d5db;
         }
         .cta-btn {
             display: inline-block;
-            margin-top: 2rem;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            margin-top: 2.5rem;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
             color: white;
-            padding: 1rem 2.5rem;
+            padding: 1rem 2.8rem;
             border-radius: 9999px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 700;
             text-decoration: none;
-            box-shadow: 0 5px 25px rgba(99, 102, 241, 0.4);
-            transition: all 0.3s ease-in-out;
-            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 6px 30px rgba(129,140,248,0.4);
+            transition: all 0.3s ease;
         }
         .cta-btn:hover {
-            transform: translateY(-0.25rem);
-            box-shadow: 0 10px 35px rgba(99, 102, 241, 0.6);
+            transform: translateY(-0.3rem);
             animation: glow 1.5s infinite ease-in-out;
         }
 
-        /* Section Titles - with a subtle glowing gradient */
+        /* 🔥 Section Titles */
         .section-title {
             font-family: 'Poppins', sans-serif;
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 800;
             text-align: center;
             margin: 6rem 0 3rem 0;
-            color: #e2e8f0;
-            text-shadow: 0 0 10px rgba(255,255,255,0.1);
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #6366f1, #ec4899);
-            margin: 1rem auto 0;
-            border-radius: 2px;
+            background: linear-gradient(90deg, #a5b4fc, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Feature Cards - with a lift-on-hover effect */
-        .feature-card, .dashboard-card {
-            background: #0e1627;
+        /* 🌌 Feature Cards */
+        .feature-card {
+            background: #0e1726;
             padding: 2rem;
             border-radius: 1.5rem;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.4);
             text-align: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transition: all 0.4s ease;
             height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            border: 1px solid rgba(255,255,255,0.08); /* More subtle border */
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .feature-card:hover, .dashboard-card:hover {
-            transform: translateY(-0.75rem);
-            box-shadow: 0 16px 50px rgba(0,0,0,0.5), 0 0 20px rgba(99, 102, 241, 0.2);
-            border: 1px solid rgba(99, 102, 241, 0.6); /* More prominent border glow */
+        .feature-card:hover {
+            transform: translateY(-0.7rem) scale(1.03);
+            box-shadow: 0 14px 45px rgba(0,0,0,0.6), 0 0 30px rgba(129,140,248,0.3);
+            border: 1px solid rgba(129,140,248,0.6);
         }
-        .feature-card h3, .dashboard-card h3 {
+        .feature-card h3 {
             margin-top: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             font-weight: 700;
-            color: #e2e8f0;
+            color: #f1f5f9;
         }
-        .feature-card p, .dashboard-card p {
+        .feature-card p {
             font-size: 0.95rem;
-            color: #a1a9b8; /* Lighter color for better contrast */
-            flex-grow: 1;
+            color: #94a3b8;
         }
-        
+
         .lottie-container {
             width: 100%;
             height: 120px;
@@ -172,74 +147,29 @@ st.markdown("""
             align-items: center;
         }
 
-        /* Dashboard specific styles */
-        .dashboard-container {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .dashboard-card {
-            text-align: left;
-            padding: 2rem;
-        }
-        .profile-img {
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border: 4px solid #6366f1;
-            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-        }
-        .metric-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .metric-icon {
-            font-size: 2rem;
-            color: #6366f1;
-        }
-        .metric-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #e2e8f0;
-        }
-        .metric-label {
-            font-size: 0.9rem;
-            color: #94a3b8;
-        }
-
-        /* Final CTA section */
+        /* 🎯 Final CTA */
         .final-cta {
             text-align: center;
-            margin: 8rem 0;
+            margin: 9rem 0;
         }
         .final-cta h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 800;
-            color: #e2e8f0;
+            color: #f8fafc;
         }
         .final-cta p {
-            color: #a1a9b8; /* Lighter color for better contrast */
+            color: #9ca3af;
             margin-bottom: 2rem;
         }
 
-        /* Footer */
+        /* ⚡ Footer */
         .footer {
             text-align: center;
             padding: 2rem;
-            color: #64748b;
+            color: #6b7280;
             margin-top: 5rem;
-            font-size: 0.875rem;
+            font-size: 0.9rem;
             border-top: 1px solid #1e293b;
-        }
-
-        /* Custom Streamlit components styling */
-        .stProgress > div > div > div > div {
-            background-color: #ec4899; /* Change progress bar color */
         }
     </style>
 """, unsafe_allow_html=True)
@@ -257,13 +187,13 @@ def lottie_player(url, height=200, width=200):
 # ---------- Navbar ----------
 st.markdown("""
 <div class="navbar">
-    <div style="font-weight:900; font-size:1.2rem; color:#818cf8; font-family:'Poppins', sans-serif;">ScreenerPro</div>
+    <div>ScreenerPro</div>
     <div>
         <a href="#features">Features</a>
-        <a href="#dashboard">Dashboard</a>
         <a href="#profile">Profile</a>
         <a href="#teams">Teams</a>
         <a href="#jobs">Jobs</a>
+        <a href="#contact">Contact</a>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -302,74 +232,9 @@ with cols[3]:
     lottie_player("https://assets5.lottiefiles.com/packages/lf20_g2zjkhzt.json", 120, 120)
     st.markdown('<h3>🤝 Collaboration</h3><p>Chat, connect, and collaborate with peers.</p></div>', unsafe_allow_html=True)
 
-# ---------- Dashboard ----------
-st.markdown('<div id="dashboard"></div>', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title">📊 Your Dashboard</h2>', unsafe_allow_html=True)
-
-dcols = st.columns([1, 2.5])
-with dcols[0]:
-    st.markdown("""
-        <div class="dashboard-card" style="text-align: center; justify-content: flex-start;">
-            <img class="profile-img" src="https://placehold.co/120x120/4f46e5/ffffff?text=U" alt="Profile Picture">
-            <h3 style="margin-top: 1rem;">Jane Doe</h3>
-            <p style="font-size: 0.9rem; color: #a1a9b8;">Full Stack Developer</p>
-        </div>
-    """, unsafe_allow_html=True)
-    st.markdown('<div style="margin-top: 1.5rem;"></div>', unsafe_allow_html=True)
-    st.markdown("""
-        <div class="dashboard-card" style="text-align: left; padding: 1.5rem;">
-            <h3>Latest Activity</h3>
-            <p style="font-size: 0.8rem; color: #a1a9b8;">Joined Team Alpha<br>Completed "Python Basics" assessment<br>Earned "Collaborator" badge</p>
-        </div>
-    """, unsafe_allow_html=True)
-
-with dcols[1]:
-    st.markdown("""
-        <div class="dashboard-container" style="justify-content: flex-start; align-items: stretch; gap: 1.5rem;">
-            <div class="dashboard-card" style="padding: 1.5rem; text-align: left; flex: 1;">
-                <div class="metric-container">
-                    <span class="metric-icon">🏆</span>
-                    <div>
-                        <span class="metric-value">12</span>
-                        <p class="metric-label">Badges Earned</p>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card" style="padding: 1.5rem; text-align: left; flex: 1;">
-                <div class="metric-container">
-                    <span class="metric-icon">✅</span>
-                    <div>
-                        <span class="metric-value">5</span>
-                        <p class="metric-label">Projects Completed</p>
-                    </div>
-                </div>
-            </div>
-            <div class="dashboard-card" style="padding: 1.5rem; text-align: left; flex: 1;">
-                <div class="metric-container">
-                    <span class="metric-icon">🤝</span>
-                    <div>
-                        <span class="metric-value">95%</span>
-                        <p class="metric-label">Collaboration Score</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown('<div style="margin-top: 1.5rem;"></div>', unsafe_allow_html=True)
-
-    st.markdown("""
-        <div class="dashboard-card" style="text-align: left;">
-            <h3>Your Progress</h3>
-            <p style="margin-bottom: 0.5rem;">Front-end Development Goal</p>
-        </div>
-    """, unsafe_allow_html=True)
-    st.progress(70)
-    st.markdown('<p style="font-size: 0.8rem; color: #a1a9b8; text-align: right;">70% Complete</p>', unsafe_allow_html=True)
-
 # ---------- Profile + Teams ----------
 st.markdown('<div id="profile"></div>', unsafe_allow_html=True)
-st.markdown('<h2 class="section-title">👤 Your Profile</h2>', unsafe_allow_html=True)
+st.markdown('<h2 class="section-title">👤 Profile & Projects</h2>', unsafe_allow_html=True)
 pcols = st.columns(3)
 with pcols[0]:
     st.markdown('<div class="feature-card">', unsafe_allow_html=True)
@@ -403,9 +268,7 @@ with ecols[1]:
 # ---------- Final CTA ----------
 st.markdown("""
 <div id="contact" class="final-cta">
-    <h2>
-        Ready to Supercharge Your Career?
-    </h2>
+    <h2>Ready to Supercharge Your Career?</h2>
     <p>Join thousands already growing with ScreenerPro.</p>
     <a href="#" class="cta-btn">🚀 Join Now</a>
 </div>
