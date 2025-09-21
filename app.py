@@ -14,36 +14,32 @@ st.set_page_config(page_title="ScreenerPro - Candidate Portal", layout="wide")
 # ---------- Logo + Hello Animation Section ----------
 # ---------- Logo + Animation Section ----------
 # ---------- Logo + Animation Section ----------
+# ---------- Logo + Animation Side by Side ----------
 st.markdown("""
 <div style="
     display:flex; 
     justify-content:center; 
     align-items:center; 
-    flex-direction:column; 
+    gap:30px; 
     margin-top:40px; 
-    margin-bottom:20px;
+    margin-bottom:40px;
 ">
+    <!-- Logo with rounded corners -->
     <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhhq_OCSv-QmuBjXeRQXr60EfsvVA4chRPCNslo3NhjVQkoKjUtiRfTPpGoQjyQXS7sMsJifQC6Yq34cAhNbq9lMwBXZqIIbCij1adyXSuNoyxuzOTDfrPU2dnna0baimldd7Y1KCkvaAfrWC1yLGxp25SJ9s4exJ-JAc8kNcTyUSgkLWbW2DdvhpWH4GlO/s320/logo.png" 
          alt="ScreenerPro Logo" 
-         style="height:80px; margin-bottom:20px;">
+         style="height:100px; border-radius:20px; box-shadow:0 4px 15px rgba(0,0,0,0.5);">
     
-    <h2 style="
-        font-family:'Poppins', sans-serif; 
-        font-weight:700; 
-        font-size:1.6rem; 
-        color:#ffffff; 
-        margin:0 0 15px 0;
-    ">
-        Welcome to <span style="color:#818cf8;">ScreenerPro</span>
-    </h2>
+    <!-- Container for animation -->
+    <div id="logo-animation"></div>
 </div>
 """, unsafe_allow_html=True)
 
-# ---------- Chatbot Animation (Hello) ----------
+# Inject the animation beside the logo
 lottie_player(
     "https://raw.githubusercontent.com/manavnagpal08/landing/refs/heads/main/y5AhpJLGt6.json", 
-    220, 220
+    120, 120
 )
+
 
 
 
